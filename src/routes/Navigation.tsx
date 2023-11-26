@@ -17,13 +17,13 @@ export const Navigation = () => {
         <nav>
           <img src={logo} alt='React Logo' />
           <ul>
-            {routes.map((route) => (
-              <li key={route.path}>
+            {routes.map(({ path, to, name }) => (
+              <li key={path}>
                 <NavLink
-                  to={route.to}
+                  to={to}
                   className={({ isActive }) => (isActive ? 'nav-active' : '')}
                 >
-                  {route.name}
+                  {name}
                 </NavLink>
               </li>
             ))}
@@ -33,7 +33,7 @@ export const Navigation = () => {
         <Routes>
           {routes.map((route) => (
             <Route
-              key={route.name}
+              key={route.to}
               path={route.path}
               element={<route.Component />} // <></>
             />
