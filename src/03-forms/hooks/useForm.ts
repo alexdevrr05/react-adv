@@ -18,12 +18,18 @@ const useForm = <T>(initState: T) => {
     setFormData({ ...initState });
   };
 
+  const isValidEmail = (email: string) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  };
+
   /** el spread es como si tuviera
    * name: formData.name
    * password1: formData.password1
    * */
 
-  return { ...formData, formData, onChange, resetForm };
+  return { ...formData, formData, onChange, resetForm, isValidEmail };
 };
 
 export default useForm;
