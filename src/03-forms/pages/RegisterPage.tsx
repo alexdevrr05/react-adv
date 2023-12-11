@@ -4,12 +4,16 @@ import { useForm } from '../hooks';
 import '../styles/styles.css';
 
 const RegisterPage = () => {
-  const { registerData, onChange } = useForm();
-  const { name, email, password1, password2 } = registerData;
+  const { formData, onChange, name, email, password1, password2 } = useForm({
+    name: '',
+    email: '',
+    password1: '',
+    password2: '',
+  });
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(registerData);
+    console.log(formData);
   };
 
   return (

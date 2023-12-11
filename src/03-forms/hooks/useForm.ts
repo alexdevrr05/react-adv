@@ -1,21 +1,22 @@
 import { ChangeEvent, useState } from 'react';
 
-const useForm = () => {
-  const [registerData, setRegisterData] = useState({
-    name: '',
-    email: '',
-    password1: '',
-    password2: '',
-  });
+// T = lo que sea que venga en las props "initState"
+const useForm = <T>(initState: T) => {
+  const [formData, setFormData] = useState(initState);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setRegisterData((prev) => ({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
-  return { registerData, onChange };
+  /** el spread es como si tuviera
+   * name: formData.name
+   * password1: formData.password1
+   * */
+
+  return { ...formData, formData, onChange };
 };
 
 export default useForm;
