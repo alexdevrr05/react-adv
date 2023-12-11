@@ -4,6 +4,8 @@ import { useForm } from '../hooks';
 import '../styles/styles.css';
 
 const RegisterPage = () => {
+  // retornamos en el hook el spread de formData para evitar hacer:
+  // const { name, email.. } = formData
   const { formData, onChange, name, email, password1, password2 } = useForm({
     name: '',
     email: '',
