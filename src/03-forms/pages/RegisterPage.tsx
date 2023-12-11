@@ -6,12 +6,13 @@ import '../styles/styles.css';
 const RegisterPage = () => {
   // retornamos en el hook el spread de formData para evitar hacer:
   // const { name, email.. } = formData
-  const { formData, onChange, name, email, password1, password2 } = useForm({
-    name: '',
-    email: '',
-    password1: '',
-    password2: '',
-  });
+  const { formData, onChange, resetForm, name, email, password1, password2 } =
+    useForm({
+      name: '',
+      email: '',
+      password1: '',
+      password2: '',
+    });
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,6 +53,9 @@ const RegisterPage = () => {
           onChange={onChange}
         />
         <button type='submit'>Create</button>
+        <button type='button' onClick={resetForm}>
+          Reset
+        </button>
       </form>
     </div>
   );
